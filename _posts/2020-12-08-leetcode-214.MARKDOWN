@@ -3,7 +3,7 @@ layout: post
 title: "Leetcode Problem 214: Shortest Palindrome"
 ---
 
-Hi! In today's post, we will be solving Leetcoed Problem 214 (Shortest Palindrome). It is a Hard level difficulty. The code can also be found here: [https://github.com/ashwins-code/leetcode-solutions/blob/main/hard/problem214-shortest-palindrome.py]
+Hi! In today's post, we will be solving Leetcoed Problem 214 (Shortest Palindrome). It is a Hard level difficulty. The code can also be found here: [https://github.com/ashwins-code/leetcode-solutions/blob/main/hard/problem214-shortest-palindrome.py](https://github.com/ashwins-code/leetcode-solutions/blob/main/hard/problem214-shortest-palindrome.py)
 
 
 ### The Problem
