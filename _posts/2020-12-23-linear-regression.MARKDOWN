@@ -18,7 +18,7 @@ The general formula for a linear line is **y = mx + c** where x is the input and
 
 The line of best fit is a line which best expresses a certain dataset. 
 
-The formula to find the gradient (**m**) given a dataset is as follows:
+The formula to find the gradient (**m**) of the line of best fit is as follows:
 
 ![Alt Text](/assets/best-fit-slope.png) 
 
@@ -26,7 +26,7 @@ The formula to find the y-intercept is as follows
 
 ![Alt Text](/assets/best-fit-y-intercept.png) 
 
-Where **x** is the list of inputs and **y** is the list of outputs
+Where **x** is the list of inputs of the dataset and **y** is the list of outputs
 
 NOTE: Any variable with a line on top of it means you find the mean of that variable
 
