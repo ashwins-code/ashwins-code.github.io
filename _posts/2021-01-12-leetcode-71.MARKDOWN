@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Leetcode Problem 260: Simplify Path"
+title: "Leetcode Problem 71: Simplify Path"
 ---
 
 Hi! In this blog, we will go through how to solve problem 71 on Leetcode called Simplify Path. The problem is medium-level difficulty. 
