@@ -119,7 +119,7 @@ function getTokens(calculation) {
     return tokens
 }
 
-console.log(getTokens("(-10.5 + 12)/5"))
+console.log(getTokens("(10.5-12)/-5"))
 
 // => ["(", 10.5 ,"-", 12, ")" , "/" ,-5]
 ```
