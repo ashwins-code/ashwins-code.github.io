@@ -15,7 +15,7 @@ A postfix expression is an expression  which is in the form of [operand] [operan
 
 #### Why do we need to convert to postfix?
 
-Postfix is a format that makes it easier for us to evaluate our expression compared to if it was in an infix format.
+Postfix is a format that makes it easier for us to evaluate our expression compared to if it was in an infix format. This is because a postfix expression has the order of operations to perform from left to right, which is not always the case with an infix expression. 
 
 #### Infix to Postfix algorithm
 
