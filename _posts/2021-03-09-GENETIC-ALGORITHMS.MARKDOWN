@@ -4,7 +4,7 @@ title: "Machine Learning Algorithms: Genetic Algorithms"
 ---
 
 
-Hello! Welcome to this post about genetic algorithms. We will discuss how they work and implement a simple model of it in Python. Please also check my github profile [here] (https://github.com/ashwins-code/)
+Hello! Welcome to this post about genetic algorithms. We will discuss how they work and implement a simple model of it in Python. Please also check my github profile [here](https://github.com/ashwins-code/)
 
 **What is a genetic algorithm?**
 
