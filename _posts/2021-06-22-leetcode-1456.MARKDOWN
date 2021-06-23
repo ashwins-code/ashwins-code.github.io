@@ -1,0 +1,145 @@
+---
+layout: post
+title: "Leetcode Problem 1456: Maximum Number of Vowels in a Substring of Given Length"
+---
+
+### The Problem
+
+Given a string s and an integer k.
+
+Return the maximum number of vowel letters in any substring of s with length k.
+
+Vowel letters in English are (a, e, i, o, u).
+
+ 
+```
+Example 1:
+
+Input: s = "abciiidef", k = 3
+Output: 3
+Explanation: The substring "iii" contains 3 vowel letters.
+
+Example 2:
+
+Input: s = "aeiou", k = 2
+Output: 2
+Explanation: Any substring of length 2 contains 2 vowels.
+
+Example 3:
+
+Input: s = "leetcode", k = 3
+Output: 2
+Explanation: "lee", "eet" and "ode" contain 2 vowels.
+
+Example 4:
+
+Input: s = "rhythms", k = 4
+Output: 0
+Explanation: We can see that s doesn't have any vowel letters.
+
+Example 5:
+
+Input: s = "tryhard", k = 4
+Output: 1
+```
+
+### The Solution
+
+To solve this problem, we can have a fixed search window (length k) that would slide across the input string. We can calculate the number of vowels in the window each time we slide it across the string. 
+
+Let's use example 1
+
+```
+Input: "abciiidef"
+k = 3
+```
+
+Our search window will always be of length k (3 in this case). It will initially start at the first letter, meaning we look at the first 3 letters first.
+
+```
+Search window: "abc"
+Vowel count: 1
+```
+
+Next, we shift the window by one position
+
+```
+Search window: "bci"
+Vowel count: 1
+```
+
+And we keep shifting the search window until it reaches the end of the string
+
+```
+Search window: "cii"
+Vowel count: 2
+```
+
+```
+Search window: "iii"
+Vowel count: 3
+```
+
+```
+Search window: "iid"
+Vowel count: 2
+```
+
+```
+Search window: "ide"
+Vowel count: 2
+```
+
+```
+Search window: "def"
+Vowel count: 1
+```
+
+Our final answer is the maximum vowel count recorded, which in this case is 3.
+
+There are different ways of getting the vowel count of each search window. One way is to go through each letter in the window and count the vowels. However, this would not be very efficient, especially as k increases.
+
+Another way to get the vowel count of each search window is by considering the fact we are shifting the search window by 1 position each time. This means in every shift, the first character is lost and a new one is added on at the end. This means, we can calculate the vowel count of the next search window, just by looking at what letter was lost and what letter was added on. 
+
+If the letter at the start was a vowel, the next window's vowel count would be 1 less than the current one, since the start letter is taken away for the next window. 
+
+If the letter that is added on is a vowel, the next window's vowel count would be 1 greater than the current window's count.
+
+If both happen at the same time, the vowel count is obviously unchanged. 
+
+For example, let's say our input string was "abcde" and k = 5.
+
+```
+First window: "abcd" -> vowel count: 1
+Second window: "bcde"
+```
+
+To calculate the vowel count of the second window, we can see that "a" was lost from the first window (meaning -1 to the vowel count) and "e" was added on to the vowel count (meaning +1 to the vowel count). This means the vowel count stays the same.
+
+This way of calculating the vowel count means we only have to go through each character of the first window (in order to get an initial vowel count), instead of having to do the same for every window. this is much more efficient than the first method of counting vowels.
+
+### The Code
+
+```python
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        vowels = "aeiou"
+        start = 0
+        end = k
+        cnt = 0
+        for char in s[start:end]:
+            if char in vowels:
+                cnt += 1
+        max_cnt = cnt
+        while end < len(s):
+            if s[end] in vowels:
+                cnt += 1
+            if s[start] in vowels:
+                cnt -= 1
+            end += 1
+            start += 1
+            max_cnt = max(cnt, max_cnt)
+  
+        return max_cnt
+```
+
