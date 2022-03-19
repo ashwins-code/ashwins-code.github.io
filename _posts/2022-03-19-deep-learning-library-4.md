@@ -38,7 +38,7 @@ $$
 x = a + bε
 $$
 
-where {%katex inline %} ε {% endkatex %} is a really small number close to 0, such that {%katex inline %} ε^2 = 0 {% endkatex %}
+where $ ε $ is a really small number close to 0, such that $ ε^2 = 0 $
 
 If we apply a function to a dual number as such...
 
@@ -70,7 +70,7 @@ Using the function evaluation and the graph, derivatives of all variables used i
 
 This is because each operator node would each come with a mechanism to calculate the partial derivatives of the nodes that it involves.
 
-If we look at the bottom right node of the diagram (the {% katex inline %}y^2{% endkatex %} node), the multiplier node should be able to calculate it's derivative with respect to the "y" node and the "2" node. 
+If we look at the bottom right node of the diagram (the $y^2$ node), the multiplier node should be able to calculate it's derivative with respect to the "y" node and the "2" node. 
 
 Each operator node would have different mechanisms, since the way a derivative is calculated depends on the operation involved.
 
@@ -85,7 +85,7 @@ Here are the different differentiation rules used by each node, which are used i
 Note: all of these will show the **partial derivative**, meaning everything that is not the variable we are finding the gradient of is treated as a constant.
 
 
-In the following, think of {% katex inline %}x{% endkatex %} and {% katex inline %}y{% endkatex %} as nodes in the graph and {% katex inline %}z{% endkatex %} as the result of the operation applied between these nodes.
+In the following, think of $x$ and $y$ as nodes in the graph and $z$ as the result of the operation applied between these nodes.
 
 
 At multiplication nodes...
