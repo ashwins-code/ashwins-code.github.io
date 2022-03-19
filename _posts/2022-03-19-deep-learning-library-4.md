@@ -38,7 +38,7 @@ $$
 x = a + bε
 $$
 
-where $ ε $ is a really small number close to 0, such that $ ε^2 = 0 $
+where $ ε $ is a really small number close to 0, such that / ε^2 = 0 /
 
 If we apply a function to a dual number as such...
 
