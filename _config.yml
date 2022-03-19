@@ -3,7 +3,8 @@ markdown: kramdown
 url: ""
 baseurl: ""
 
-
+kramdown:
+  math_engine: katex
 
 plugins:
   - jemoji
