@@ -1,0 +1,142 @@
+---
+layout: post
+title: "Leetcode Problem 71: Simplify Path"
+---
+
+Hi! In this blog, we will go through how to solve problem 71 on Leetcode called Simplify Path. The problem is medium-level difficulty. 
+
+### The Question
+
+Given an absolute path for a file (Unix-style), simplify it. Or in other words, convert it to the canonical path.
+
+In a UNIX-style file system, a period . refers to the current directory. Furthermore, a double period .. moves the directory up a level.
+
+Note that the returned canonical path must always begin with a slash /, and there must be only a single slash / between two directory names. The last directory name (if it exists) must not end with a trailing /. Also, the canonical path must be the shortest string representing the absolute path.
+
+
+
+Examples
+
+
+```
+Input : "/home/"
+
+Output: "/home"
+
+Input : "/../"
+
+Output: "/"
+
+Input : "home//foo/"
+
+Output : "home/foo"
+
+Input : "/a/../../b/../c//.//"
+
+Output: "/c"
+
+Input: "/a//b////c/d//././/.."
+
+Output: "/a/b/c"
+```
+
+
+#### Solution
+
+
+
+To solve this problem, we can make use of a stack. A stack is a data structure where objects are added and removed through a "last in, first out" principle.
+
+Let's use our own example to see how this will work.
+
+```
+Example: "/a/b/c/.././d"
+```
+Let's make an array called *folders* which is created by splitting the input string by "/". The *folders* array would then look like this:
+
+```
+["", "a","b","c","..",".", "d"]
+```
+Now let's initialise our stack which would start off as empty
+
+```
+stack = []
+```
+
+Let's go through each element of the *folders* array and push the element onto the stack if the element isn't an empty string, equal to ".." or equal to ".". This helps to simulate as if we were taking that path of folders.
+
+If the element is equal to "..", we pop the last element off the stack as a ".." means we travel back one directory. If the element is ".", we do nothing as it just means stay in the current directory (the last element of the stack is our current directory). After we have iterated through the whole *folders* array, the stack should represent our file path
+
+
+```
+"" => Empty string so we don't do anything with the stack
+
+"a" => push this onto the stack : stack = ["a"]
+
+"b" => push this onto the stack : stack = ["a", "b"]
+
+"c" => push this onto the stack : stack = ["a", "b", "c"]
+
+".." => pop element off the stack : stack = ["a", "b"]
+
+"." => do nothing as it just means stay in the current directory
+
+"d" => push this onto the stack : stack = ["a","b","c","d"]
+```
+
+
+Now that we have iterated over the whole *folders* array, our stack represents out folder path. All we have to do is join each element of the stack with a "/" so it looks like so:
+
+
+
+Output: "/a/b/c/d"
+
+
+
+There you go! That's the algorithm behind the solution of this problem. 
+
+#### TL;DR
+
+To summarise:
+
+Have an array which is made by splitting the input string by "/"
+
+Initialise an empty stack
+
+Iterate through the array
+
+Push the current element onto the stack if it is a folder name, pop the last element of the stack when you encounter a "..".
+Join the stack with the "/" character to get the path string
+
+
+The Code
+
+```python
+def simplifyPath(path) :
+  stack = []
+  folders = path.split("/")
+
+  for folder in folders:
+    if folder != "..":
+      if folder != "." and folder != "":
+        stack.append(folder)
+    else:
+      if stack != []:
+        stack.pop()
+
+            
+  return "/" + "/".join(stack)
+```
+            
+
+
+
+
+
+
+
+
+
+
+
+

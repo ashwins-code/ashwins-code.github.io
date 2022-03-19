@@ -1,0 +1,92 @@
+---
+layout: post
+title: "Leetcode problem 1324: Print Words Vertically"
+---
+
+Hi! Welcome to this post where we solve Leetcode problem 1324 called "Print Words Vertically". It is a medium level difficulty problem.
+
+**The problem**
+
+Given a string s. Return all the words vertically in the same order in which they appear in s.
+Words are returned as a list of strings, complete with spaces when is necessary. (Trailing spaces are not allowed).
+Each word would be put on only one column and that in one column there will be only one word.
+
+```
+Example 1:
+
+Input: s = "HOW ARE YOU"
+Output: ["HAY","ORO","WEU"]
+Explanation: Each word is printed vertically. 
+ "HAY"
+ "ORO"
+ "WEU"
+```
+
+```
+Example 2:
+
+Input: s = "TO BE OR NOT TO BE"
+Output: ["TBONTB","OEROOE","   T"]
+Explanation: Trailing spaces is not allowed. 
+"TBONTB"
+"OEROOE"
+"   T"
+```
+
+```
+Example 3:
+
+Input: s = "CONTEST IS COMING"
+Output: ["CIC","OSO","N M","T I","E N","S G","T"]
+``` 
+
+**The Solution**
+
+As you might have noticed, there is a pattern in the output lists. 
+
+The first element of the output array is a string that contains each word's first letter, the second element contains each word's second letter, the third element contains each word's third letter and so on. This makes sense since each element of the array represents a column of the vertical print.
+
+The length of the output array, logically, must be the same length as the longest word.
+
+Finally, spaces are used to fill places where the are no more letters to fill from a certain word. See the second example. The last element has used spaces for all the words except "NOT", since they are all two letter words. 
+
+With these things considered, we can come up with the following algorithm
+
+NOTE: Trailing spaces are not permitted so you have to remove any spaces that are trailing to the right of each string in the output array. This is why, in example 2, the last element has no spaces after "T".
+
+```
+words = array of all the input words
+max_len = length of longest word
+result = []
+
+for i = 0 to max_len
+    append an empty string to "result"
+    for each word in words
+        if length of word is less than i
+            result[i] += word[i]
+        else
+            result[i] += " "
+    result[i] = result[i].rstrip() (removes any trailing spaces to the right of the string)
+
+now result has the final answer
+```
+
+**The Code**
+
+```python
+class Solution:
+    def printVertically(self, s: str) -> List[str]:
+        words = s.split(" ")
+        max_len = max([len(word) for word in words])
+        result = []
+        
+        for i in range(max_len):
+            result.append("")
+            for j in words:
+                if i < len(j):
+                    result[i] += j[i]
+                else:
+                    result[i] += " "
+            result[i] = result[i].rstrip()
+        return result
+```

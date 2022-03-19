@@ -1,0 +1,97 @@
+---
+layout: post
+title: "Leetcode Problem 214: Shortest Palindrome"
+---
+
+Hi! In today's post, we will be solving Leetcoed Problem 214 (Shortest Palindrome). It is a Hard level difficulty. The code can also be found here: [https://github.com/ashwins-code/leetcode-solutions/blob/main/hard/problem214-shortest-palindrome.py](https://github.com/ashwins-code/leetcode-solutions/blob/main/hard/problem214-shortest-palindrome.py)
+
+
+### The Problem
+
+Given a string **s**, you can convert it to a palindrome by adding characters in front of it. Find and return the shortest palindrome you can find by performing this transformation.
+```
+Example 1:
+
+Input: s = "aacecaaa"
+Output: "aaacecaaa"
+
+
+Example 2:
+
+Input: s = "abcd"
+Output: "dcbabcd"
+```
+
+### The Solution
+
+A palindrome is something which looks the same as its reverse.
+
+In order to solve this problem, we need to find the shortest prefix to prepend to **s** to make **s** palindromic. 
+
+To find this prefix, we have to iterate through **s** in reverse, adding each character we come across to the prefix(which is initially an empty string). If **prefix** + **s** is palindromic, we have found the shortest palindrome so we just return **prefix** + **s**.
+
+Let's use example 2
+
+NOTE: palindrome is storing **prefix** + **s**
+
+```
+prefix = ""
+s = "abcd"
+palindrome = "abcd"
+```
+
+Now iterate the characters of **s** in reverse
+
+```
+Iteration 1
+
+current character is "d"
+
+prefix = "d"
+palindrome = "dabcd" (not palindromic)
+```
+
+```
+Iteration 2
+
+current character is "c"
+
+prefix = "dc"
+palindrome = "dcabcd" (not palindromic)
+```
+
+```
+Iteration 3
+
+current character is "b"
+
+prefix = "dcb"
+palindrome = "dcbabcd" (palindromic)
+
+OUTPUT: "dcbabcd"
+```
+
+
+### The Code
+
+```python
+class Solution:
+    def shortestPalindrome(self, s: str) -> str:
+        if self.palindromic(s):
+            return s
+        
+        prefix = ""
+        idx = len(s) - 1
+        palindrome = s
+        
+        while self.palindromic(palindrome) == False:
+            prefix += s[idx]
+            
+            palindrome = prefix + s
+            idx -= 1
+            
+        return palindrome
+    
+    def palindromic(self, s):
+        return s == s[::-1]
+```

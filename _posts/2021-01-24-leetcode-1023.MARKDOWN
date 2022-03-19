@@ -1,0 +1,152 @@
+---
+layout: post
+title: "Leetcode problem 1023: Camelcase Matching"
+---
+
+Hi! In today's post, we will be solving Leetcode problem 1023 called Camelcase matching.
+
+Here's the code on my GitHub repo: https://github.com/ashwins-code/leetcode-solutions/blob/main/medium/problem1023-camelcase-matching.py
+
+**The Problem**
+
+
+
+A query word matches a given pattern if we can insert lowercase letters to the pattern word so that it equals the query. (We may insert each character at any position, and may insert 0 characters.)
+
+
+
+Given a list of queries, and a pattern, return an answer list of booleans, where answer[i] is true if and only if queries[i] matches the pattern.
+
+```
+Example 1:
+
+
+
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FB"
+
+Output: [true,false,true,true,false]
+
+Explanation: 
+
+"FooBar" can be generated like this "F" + "oo" + "B" + "ar".
+
+"FootBall" can be generated like this "F" + "oot" + "B" + "all".
+
+"FrameBuffer" can be generated like this "F" + "rame" + "B" + "uffer".
+
+
+
+Example 2:
+
+
+
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBa"
+
+Output: [true,false,true,false,false]
+
+Explanation: 
+
+"FooBar" can be generated like this "Fo" + "o" + "Ba" + "r".
+
+"FootBall" can be generated like this "Fo" + "ot" + "Ba" + "ll".
+
+
+
+Example 3:
+
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"], pattern = "FoBaT"
+
+Output: [false,true,false,false,false]
+
+Explanation: 
+
+"FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "T" + "est".
+
+```
+
+**The Solution**
+
+
+
+To see if a query matches the pattern, we need to try and build the pattern from the query. 
+
+We can do this by iterating through the characters of the query and appending them to an initially empty string if they match "the next expected character" (we'll see what this is later). If the built string is equal to the pattern, the query matches the pattern.
+
+Note: Whenever we come across a capital character, we always append that to the string
+
+
+Here's an example where "s" is our initially empty string.
+
+```
+query = "FooBar"
+
+pattern = "FoBa"
+
+next_expected_character = "F" (always initialise this to the first character of the pattern)
+
+s = ""
+
+Let's go through each character of the query
+
+"F" => s = "F" since "F" is the next expected character. Next expected character now becomes "o"
+"o" => s = "Fo" since "o" is the is the next expected character. Next expected character now becomes "B"
+"o" => do nothing as it doesn't match the next expected character
+"B"  => s = "FoB" as "B" is the next expected character. Next expected character now becomes "a"
+"a" => s = "FoBa" as "a" is the next expected character. We now do not have a next expected character as we've gone through all the characters in the pattern
+"r" => Do nothing as it doesn't match the next expected character
+s = "FoBa", pattern = "FoBa". s == pattern so the query matches the pattern
+So, as you can see, "next expected character" is the next character to match in the pattern after we have matched a certain character in the pattern from the query
+```
+
+Here's an example which does not match the pattern
+
+```
+query = "FooBarT"
+
+pattern = "FoBa"
+
+next_expected_character = "F" (always initialise this to the first character of the pattern)
+
+s = ""
+
+Let's go through each character of the query
+
+"F" => s = "F" since "F" is the next expected character. Next expected character now becomes "o"
+"o" => s = "Fo" since "o" is the is the next expected character. Next expected character now becomes "B"
+"o" => do nothing as it doesn't match the next expected character
+"B"  => s = "FoB" as "B" is the next expected character. Next expected character now becomes "a"
+"a" => s = "FoBa" as "a" is the next expected character. We now do not have a next expected character as we've gone through all the characters in the pattern
+"r" => Do nothing as it doesn't match the next expected character
+"T" => s = "FoBaT". Even though it doesn't match the expected character, we must add this character since it is a capital letter
+s = "FoBaT", pattern = "FoBa". s != pattern so the query does not match the pattern
+```
+
+**The Code** 
+
+
+```python
+class Solution:
+    def camelMatch(self, queries: List[str], pattern: str) -> List[bool]:
+        ans = []
+        for i in queries:
+            pattern_ptr = 0
+            s = ""
+            for j in i:
+                if j.isupper():
+                    if pattern_ptr < len(pattern):
+                        if j == pattern[pattern_ptr]:
+                            pattern_ptr += 1
+                        else:
+                            break
+                    s += j
+                elif pattern_ptr < len(pattern):
+                    if j == pattern[pattern_ptr]:
+                        s += j
+                        pattern_ptr += 1
+
+            ans.append(s == pattern)
+        
+        return ans
+```
+
+
