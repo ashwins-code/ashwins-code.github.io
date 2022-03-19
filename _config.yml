@@ -3,10 +3,7 @@ markdown: kramdown
 url: ""
 baseurl: ""
 
-# for atom feed
-author:
-  name: Sharad Raj Singh Maurya
-  email: dev_sharad@outlook.com
+
 
 plugins:
   - jemoji
