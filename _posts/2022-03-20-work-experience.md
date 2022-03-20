@@ -88,6 +88,6 @@ For example, the branding of the site (e.g using the client's logo and changing 
 
 Setting up the site also seemed like a long and tedious task to me, however all the account managers said they didn't mind it at all and quite enjoyed doing so, which highlighted how important it is to have passion in what you do. It also showed me the huge amount of hard work people put in before a product is given to its users, which can easily be overlooked!
 
-
+## Thank you
 
 Thank you for reading through this post and thank you especially to the people at TopScore for  giving me a very exciting and interesting insight into life at work! I am very grateful for everything that I took away from that day.
