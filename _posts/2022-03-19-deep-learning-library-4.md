@@ -102,6 +102,7 @@ z = \frac{x}{y} \newline
 \frac{dz}{dx} = \frac{1}{y} \newline
 \frac{dz}{dy} = -xy^{-2}
 $$
+
 At addition nodes...
 
 $$
