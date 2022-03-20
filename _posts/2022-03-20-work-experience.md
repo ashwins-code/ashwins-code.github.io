@@ -13,7 +13,7 @@ TopScore provides a platform for companies to carry out completely virtual asses
 
 Before TopScore, when companies would hire in bulk, all the assessors and candidates would go to an **assessment centre** and carry out all the assessments of the candidates they needed to do there. Assessors had to bring thousands and thousands of pieces of paper, all used to note down the performance of each candidate. 
 
-This of course was a huge hassle, as papers would often get lost, get coffee split on and there also the huge cost of printing and transporting all the paper. In terms of data privacy, the papers often had candidates' private information on there, so if that was to be lost on a train/bus, it could easily get into wrong hands.
+This of course was a huge hassle, as papers would often get lost, get coffee split on and there's also the huge cost of printing and transporting all the paper. In terms of data privacy, the papers often had candidates' private information on there, so if that was to be lost on a train/bus, it could easily get into wrong hands.
 
 TopScore allows comapanies to get rid of ALL of the hassle caused by manual assessment centres by providing a 100% virtual assessment centre.
 
