@@ -17,7 +17,7 @@ This of course was a huge hassle, as papers would often get lost, get coffee spl
 
 TopScore allows comapanies to get rid of ALL of the hassle caused by manual assessment centres by providing a 100% virtual assessment centre.
 
-The platform provides a dashboard of scores and reports, in-built video-conferencing, automated scheduling, digital note-taking and report writing and much much more. It not only gets rid of all that paper used in manual assessment centres, but it also goes beyond by providing companies the ability to assess people from a wide range of places all at once, especially due to the in-built video conferencing. In the height of the pandemic, TopScore was huge in demand as a result, due to its ability to allow companies to still hire bulk, even when nobody was allowed out their homes!
+The platform provides a dashboard of scores and reports, in-built video-conferencing, automated scheduling, digital note-taking and report writing and much much more. It not only gets rid of all that paper used in manual assessment centres, but it also goes beyond by providing companies the ability to assess people from a wide range of places all at once, especially due to the in-built video conferencing. In the height of the pandemic, TopScore was huge in demand as a result, due to its ability to allow companies to still hire bulk, even when nobody was allowed out their homes! But it's still doing well even after the height of the pandemic, since it can easily be used for in-person assessment centres, providing a way for everything to operate paperless-ly. 
 
 Their clients include Tesco, BT and BAE Systems just to name a few...
 
