@@ -38,7 +38,7 @@ $$
 x = a + bε
 $$
 
-where $ ε $ is a really small number close to 0, such that  \\ ε^2 = 0 \\
+where $ ε $ is a really small number close to 0, such that  $$ ε^2 = 0 $$
 
 If we apply a function to a dual number as such...
 
@@ -47,7 +47,7 @@ x = a + bε \newline
 f(x) = f(a + bε) = f(a) + (f'(a) \cdot b)ε
 $$
 
-you can see we calculate both the result of $ f(a) $ and the gradient of $ a $, given by the coefficient of $ ε $.
+you can see we calculate both the result of $$ f(a) $$ and the gradient of $$ a $$, given by the coefficient of $$ ε $$.
 
 Forward-mode is preferred when the input dimensions are smaller than the output dimensions of the function, however, in a deep learning setting, the input dimensions would be larger than that of the output. Reverse-mode is preferred for this situation.
 
@@ -57,9 +57,7 @@ Reverse-mode differentiation is a bit more difficult to implement.
 
 As calculations are performed, a **computation graph** is built.
 
-For example, the following diagram shows the computation graph for $
-f(x) = \frac{2x^2 + 2y}{4}
-$
+For example, the following diagram shows the computation graph for $$ f(x) = \frac{2x^2 + 2y}{4} $$
 
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s3iqp262sft3tk4szd21.png)
@@ -85,10 +83,11 @@ Here are the different differentiation rules used by each node, which are used i
 Note: all of these will show the **partial derivative**, meaning everything that is not the variable we are finding the gradient of is treated as a constant.
 
 
-In the following, think of $x$ and $y$ as nodes in the graph and $z$ as the result of the operation applied between these nodes.
+In the following, think of $x$ and $y$ as nodes in the graph and $$z$$ as the result of the operation applied between these nodes.
 
 
 At multiplication nodes...
+
 $$
 z = xy \newline  
 \frac{dz}{dx} = y \newline
@@ -142,7 +141,7 @@ z = x \cdot y \newline
 \frac{dz}{dy} = x^T \otimes f'(z)
 $$
 
-... where $f(z)$ is a function that involves $z$, meaning $f'(z)$ would be the gradient calculated in the previous layer of the graph. By default (aka if z is the highest node in the graph), $f(z) = z$, meaning $f'(z)$ would be a matrix of 1s with the same shape as $z$
+... where $$f(z)$$ is a function that involves $$z$$, meaning $$f'(z)$$ would be the gradient calculated in the previous layer of the graph. By default (aka if z is the highest node in the graph), $$f(z) = z$$, meaning $$f'(z)$$ would be a matrix of 1s with the same shape as $$z$$
 
 ## The code
 
