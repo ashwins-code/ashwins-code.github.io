@@ -1,0 +1,95 @@
+---
+layout: post
+title: "How DeepFakes Are Made: Generative Adversarial Networks"
+---
+
+# What are Generative Adversarial Networks? (GANs)
+
+Let's say we wanted to build a model that would draw us images of different types of cars that we haven't seen before.
+
+It is easy for us to build a model to take an image and to predict whether it is a car or not (simple binary classification problem). Even though this model would have an "understanding" of what a car is, we can not use this model to produce us an image of a car.
+
+Another way that may come to mind is to use an RNN. RNNs are great at generating text, so they must be good at generating images, right? Well, yes. RNNs have been used for Image Generation. For example, DRAW utilises an encoder-decoder RNN architecture, for producing images. 
+
+Having said that, GANs are most commonly used for these type of generative problems.
+
+GANs are an approach to training generative models, usually using deep learning methods. The architecture consists of two sub-models known as the *discriminator* and the *generator*.
+
+# How do GANs work?
+
+As said before, GANs consist of two sub-models: the *discriminator* and the *generator*.
+
+## Generator
+
+The job of the generator, as the name suggests, is to generate the images that we see.
+
+They take in a vector produced from a random distribution and uses it to generate an image. The random vector essentially acts as a seed for the produced image.
+
+## Discriminator
+
+The job of the discriminator is to tell whether an image is fake/generated or not with our task in mind.
+
+In the case of our earlier example, the discriminator's job would be to take in an image and to tell whether it is a real image of a car or whether it is a fake/generated image of a car.
+
+## So what is the point of having these two sub-models?
+
+These two sub-models help to make each improve. 
+
+When a GAN trains, the generator is fed a random vector, so that it produces an image. 
+
+This image is then fed into the discriminator. Since this image is a generated image, the discriminator should classify it as fake. But the aim of the generator is to TRICK the discriminator into classifying the produced image as a real image.
+
+If the discriminator is able to spot this fake, this means the generator needs to improve itself. So the parameters of the generator are adjusted so that it does so.
+
+If the discriminator is unable to spot this fake, then that means the discriminator needs to improve, so its parameters are adjusted accordingly.
+
+The discriminator is then fed real images (provided by some example dataset). In this case, the discriminator should classify it as real. If not, its parameters are adjusted to improve. 
+
+This repeats again and again throughout the training process.
+
+As the training process goes on, the generator and discriminator keep getting better. The generator would start to produce images that are similar to the real images in the example dataset and the discriminator would be able to distinguish between real and fake, even if the fake images are getting better and better.
+
+However, as the training process goes on and on, the generator, in theory, should get so good that it produces images indistinguishable from real images. The discriminator would be outputting 0.5 each time at this point (if 0 means fake and 1 means real), since it should not be able to tell what's real or not, so just does a 50/50 guess. 
+
+At this point, we can throw away the discriminator and feed the generator random vectors to produce images!
+
+## Latent Space 
+
+At the end of the training process, the generator would have produced a mapping from the random vector space it was trained from to images of the problem domain (one point from the random vector space would correspond to a point in the problem domain). In our example, the problem domain would be images of cars.
+
+This mapping is known as a *latent space*. This latent space effectively gives meaning to the random distribution the generator was trained on. 
+
+This is important, since any transformation performed on the latent space would result in a meaningful change in the resulting image!
+
+For example, say we fed the generator an initial random vector and it produced an image of a red sports car. 
+
+We could apply a transformation to this initial random vector (e.g adding 1 to the whole vector) and that could lead to a change meaningful change in the resulting image (e.g it would now be a blue sports car instead of a red one).
+
+Similarly, other transformations would correspond to different things. There may be a transformation for changing the car's colour, a transformation for the size of the car or maybe even a transformation for if the windows are tinted or not!
+
+
+## Conditional GANs
+
+GANs are great at producing a real looking image, but they do not give us any control over what type of image is produced.
+
+If we use the example of drawing digits, we can only ask a GAN "draw me a digit", but we can really say "draw me the number 4".  
+
+This is where Conditional GANs come in.
+
+The generator is still fed a random vector, but the vector is also conditioned with another input. 
+
+In our example, this other input would be whether we want the number 1, 2, 3, 4 etc.
+
+The input to the discriminator is also conditioned in the same way. This means that the discriminator can tell whether an image is fake or not given, in our case, what the digit is meant to be. It could take a perfectly generated image of a 4, but is told that it's meant to be a 1 through the additional input, and therefore classify it as fake.
+
+This extension of GANs allows for really impressive applications such as text-to-image generation, style transfer, translating photos from day to night and so much more!
+
+
+
+The rise of GANs are extremely exciting, but obviously comes along with extreme danger, as you can imagine. DeepFakes (generated commonly by GANs) are getting increasingly realistic and have reach a point where they can fool are easily large amount of people. There is a huge worry on how governments can protect the public from maliciously used DeepFakes and how they should be controlled. 
+
+Regardless of that, GANs are really really cool 👍
+
+
+
+
