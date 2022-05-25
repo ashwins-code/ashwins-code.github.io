@@ -25,4 +25,4 @@ defaults:
       permalink: /posts/:title/
 exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]
 
-theme: jekyll-theme-tactile
+theme: jekyll-theme-slate
